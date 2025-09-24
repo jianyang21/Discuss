@@ -1,0 +1,135 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0a0a0a; /* pure black background */
+    color: white;
+}
+
+/* NAVBAR */
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;  
+    align-items: center;
+    background: rgba(20, 20, 20, 0.9); /* dark transparent */
+    backdrop-filter: blur(10px);
+    padding: 18px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-top: 0; 
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+li {
+    margin: 0 25px;
+}
+
+li a {
+    text-decoration: none;
+    color: #e6e6e6;
+    font-weight: 400;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 50%;
+    background: white;
+    transition: 0.3s ease;
+    transform: translateX(-50%);
+}
+
+li a:hover::after {
+    width: 100%;
+}
+
+li a:hover {
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* Profile Button */
+.profile {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.profilebutton {
+    padding: 10px 18px;
+    background: #111; 
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.profilebutton:hover {
+    background: #1a1a1a;
+    transform: scale(1.05);
+    border-color: white;
+}
+
+/* Heading & Paragraph */
+h1 {
+    text-align: center;
+    margin-top: 200px;
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+    text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.08);
+    animation: fadeIn 2s ease-in-out;
+}
+
+p {
+    text-align: center;
+    margin: 12px 0;
+    font-size: 20px;
+    color: #bfbfbf;
+    letter-spacing: 1px;
+    font-weight: 300;
+    text-transform: lowercase;
+    animation: fadeIn 3s ease-in-out;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVENESS */
+@media (max-width: 768px) {
+    ul {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    li {
+        margin: 10px 0;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
