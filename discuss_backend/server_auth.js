@@ -10,9 +10,24 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🔹 Load Firebase credentials
-const serviceAccount = require("./discuss-57858-firebase-adminsdk-fbsvc-8d88fac979.json");
 
+// Initialize Firebase using environment variables
+admin.initializeApp({
+  credential: admin.credential.cert({
+    type: process.env.FIREBASE_TYPE,
+    project_id: process.env.FIREBASE_PROJECT_ID,
+    private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
+    private_key: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    client_email: process.env.FIREBASE_CLIENT_EMAIL,
+    client_id: process.env.FIREBASE_CLIENT_ID,
+    auth_uri: process.env.FIREBASE_AUTH_URI,
+    token_uri: process.env.FIREBASE_TOKEN_URI,
+    auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_PROVIDER_X509_CERT_URL,
+    client_x509_cert_url: process.env.FIREBASE_CLIENT_X509_CERT_URL
+  })
+});
+
+console.log("Firebase initialized successfully!");
 // Initialize Firebase Admin (only once)
 if (!admin.apps.length) {
   admin.initializeApp({
@@ -134,3 +149,4 @@ app.get("/profile", verifyToken, async (req, res) => {
 // ==========================
 const PORT = 5001;
 app.listen(PORT, () => console.log(`🔑 Auth server running on http://localhost:${PORT}`));
+
